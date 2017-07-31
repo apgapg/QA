@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import qa.reweyou.in.qa.MainActivity;
 import qa.reweyou.in.qa.R;
 import qa.reweyou.in.qa.VideoCapturetest;
 
@@ -30,7 +31,9 @@ public class ReplyFragment extends Fragment {
         view.findViewById(R.id.reply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().startActivity(new Intent(getActivity(), VideoCapturetest.class));
+              //  getActivity().startActivity(new Intent(getActivity(), VideoCapturetest.class));
+
+                ((MainActivity) getActivity()).shootvideo();
             }
         });
         return view;

@@ -22,6 +22,11 @@ android {
     }
 }
 
+repositories {
+    jcenter()
+    maven { url "https://dl.bintray.com/drummer-aidan/maven" }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.0.0'
@@ -31,5 +36,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     compile 'com.android.support:cardview-v7:26.0.0'
+    compile 'io.github.memfis19:annca:0.3.7'
 
+
+    compile project(path: ':videoshootlibrary')
 }

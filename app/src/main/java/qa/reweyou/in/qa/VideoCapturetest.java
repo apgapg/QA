@@ -35,6 +35,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 
 import qa.reweyou.in.qa.customview.AlertDialogBox;
 import qa.reweyou.in.qa.customview.CameraHelper;
@@ -334,18 +335,18 @@ public class VideoCapturetest extends AppCompatActivity implements OnClickListen
         // camera. Query camera to find all the sizes and choose the optimal size given the
         // dimensions of our preview surface.
         parameters = mCamera.getParameters();
-        /*List<Camera.Size> mSupportedPreviewSizes = parameters.getSupportedPreviewSizes();
-        List<Camera.Size> mSupportedVideoSizes = parameters.getSupportedVideoSizes();*/
-       /* Camera.Size optimalSize = CameraHelper.getOptimalVideoSize(mSupportedVideoSizes,
+        List<Size> mSupportedPreviewSizes = parameters.getSupportedPreviewSizes();
+        List<Camera.Size> mSupportedVideoSizes = parameters.getSupportedVideoSizes();
+        Camera.Size optimalSize = CameraHelper.getOptimalVideoSize(mSupportedVideoSizes,
                 mSupportedPreviewSizes, mSurfaceView.getWidth(), mSurfaceView.getHeight());
-*/
+
         // Use the same size for recording profile.
-        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
-        profile.videoFrameWidth = 640;
+        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_720P);
+        profile.videoFrameWidth = optimalSize.width;
         profile.audioCodec = MediaRecorder.AudioEncoder.AAC;
-        profile.videoCodec = MediaRecorder.VideoEncoder.H264;
-        profile.videoFrameHeight = 480;
-        profile.videoBitRate = 850000;
+        profile.videoCodec = MediaRecorder.VideoEncoder.MPEG_4_SP;
+        profile.videoFrameHeight = optimalSize.height;
+        //profile.videoBitRate = 850000;
         profile.audioBitRate = 20000;
         profile.audioChannels = 1;
 
