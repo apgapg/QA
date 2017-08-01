@@ -2,14 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+    <qa.reweyou.in.qa.customview.SquareCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="4dp"
         app:cardBackgroundColor="#fbfbfb"
+        app:cardCornerRadius="4dp"
+        android:id="@+id/cv"
         app:cardElevation="2dp"
-        app:cardUseCompatPadding="true"></android.support.v7.widget.CardView>
+        app:cardUseCompatPadding="true">
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="44dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="21 UP" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+android:layout_gravity="end"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="5 CO" />
+
+
+
+
+        </FrameLayout>
+    </qa.reweyou.in.qa.customview.SquareCardView>
 </RelativeLayout>

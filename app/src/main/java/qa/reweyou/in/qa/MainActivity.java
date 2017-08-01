@@ -12,17 +12,18 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.afollestad.materialcamera.MaterialCamera;
-
 import io.github.memfis19.annca.Annca;
 import io.github.memfis19.annca.internal.configuration.AnncaConfiguration;
 import qa.reweyou.in.qa.customview.MainFragment;
 import qa.reweyou.in.qa.customview.ReplyFragment;
+import qa.reweyou.in.qa.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
     private final static int CAMERA_RQ = 6969;
     private static final int CAPTURE_MEDIA = 77;
+    private ViewPager viewPager;
+    private PagerAdapter pagerAdapter;
 
 
     @Override
@@ -30,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+        viewPager = findViewById(R.id.viewpager);
+       pagerAdapter=new PagerAdapter(getSupportFragmentManager());
+       viewPager.setAdapter(pagerAdapter);
     }
 
     @SuppressLint("MissingPermission")
-    public void shootvideo() {
+    public void shootvideo(String quesid) {
+        Utils.QUES_ID=quesid;
         //  File saveFolder = new File(Environment.getExternalStorageDirectory(), "Reweyous");
       /*  if (!saveFolder.mkdirs())
             throw new RuntimeException("Unable to create save directory, make sure WRITE_EXTERNAL_STORAGE permission is granted.");
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         videoLimited.setMediaAction(AnncaConfiguration.MEDIA_ACTION_VIDEO);
         videoLimited.setMediaQuality(AnncaConfiguration.MEDIA_QUALITY_AUTO);
         videoLimited.setVideoFileSize(10 * 1024 * 1024);
+
         videoLimited.setCameraFace(AnncaConfiguration.CAMERA_FACE_FRONT);
         videoLimited.setMinimumVideoDuration(100 * 1000);
         new Annca(videoLimited.build()).launchCamera();
@@ -66,8 +70,26 @@ public class MainActivity extends AppCompatActivity {
         // Received recording or error from MaterialCamera
         if (requestCode == CAPTURE_MEDIA && resultCode == RESULT_OK) {
             String filePath = data.getStringExtra(AnncaConfiguration.Arguments.FILE_PATH);
-            Toast.makeText(this,filePath,Toast.LENGTH_SHORT).show();
+            if (BuildConfig.DEBUG)
+                Toast.makeText(this, filePath, Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, ReplyVideoActivity.class);
+            i.putExtra("videopath", filePath);
+            startActivity(i);
+
         }
+    }
+
+    public void showSecondPage(String queid, String question) {
+        ((ReplyFragment) pagerAdapter.getRegisteredFragment(1)).showdata(queid,question);
+        viewPager.setCurrentItem(1);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (viewPager.getCurrentItem() == 1)
+            viewPager.setCurrentItem(0);
+        else finish();
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {

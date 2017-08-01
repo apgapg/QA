@@ -1,1 +1,1 @@
-include ':app', ':videoPreviewLib', ':videoshootlibrary'
+include ':app', ':videoPreviewLib', ':videoshootlibrary', ':annca'

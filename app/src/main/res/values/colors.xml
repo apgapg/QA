@@ -8,7 +8,8 @@
     <color name="feedbackground">#f4f4f4</color>
     <color name="grey">#dbdbdb</color>
     <color name="red">#f44336</color>
-
+    <color name="yellow">#FFEE58</color>
+<color name="white">#fff</color>
     <color name="divider">#BDBDBD</color>
     <color name="greylight">#25000000</color>
     <color name="main">#75000000</color>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="qa.reweyou.in.qa">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -27,16 +28,17 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:name=".ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".ApplicationClass"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:windowSoftInputMode="adjustNothing"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,24 +49,36 @@
         <activity
             android:name=".customview.ReplyActivity"
             android:label="@string/title_activity_reply"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VideoCapturetest"
             android:label="@string/title_activity_reply"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="io.github.memfis19.annca.internal.ui.camera.Camera1Activity"
-            android:screenOrientation="portrait"
-             />
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.github.memfis19.annca.internal.ui.camera2.Camera2Activity"
-            android:screenOrientation="portrait"
-          />
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.github.memfis19.annca.internal.ui.preview.PreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="Memory"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-             />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".VideoDisplay"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.Preview" />
+        <activity
+            android:name=".ReplyVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.Transparent"
+            android:windowSoftInputMode="adjustPan|stateVisible"></activity>
     </application>
-
 
 </manifest>
