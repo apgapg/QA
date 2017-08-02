@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -63,6 +64,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
 
 
     }
@@ -100,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         progressDialog.show();
         userSessionManager = new UserSessionManager(this);
 
-        AndroidNetworking.post("https://www.reweyou.in/google/signup.php")
+        AndroidNetworking.post("https://www.reweyou.in/interview/join.php")
                 .addBodyParameter("profileurl", acct.getPhotoUrl().toString())
                 .addBodyParameter("name", acct.getDisplayName())
                 .addBodyParameter("email", acct.getEmail())

@@ -4,6 +4,9 @@
     <style name="AppTheme.NoActionBar.Preview">
         <item name="android:statusBarColor">@android:color/black</item>
     </style>
+    <style name="AppTheme.NoActionBar.Black">
+        <item name="android:statusBarColor">@android:color/black</item>
+    </style>
     <style name="AppTheme.NoActionBar.Transparent">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

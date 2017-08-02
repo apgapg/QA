@@ -2,6 +2,7 @@ package qa.reweyou.in.qa.customview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import qa.reweyou.in.qa.AskQuestion;
 import qa.reweyou.in.qa.model.TopQuestionModel;
 import qa.reweyou.in.qa.NewQuesAdapter;
 import qa.reweyou.in.qa.R;
@@ -72,7 +74,7 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.ask).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+mContext.startActivity(new Intent(mContext, AskQuestion.class));
             }
         });
 

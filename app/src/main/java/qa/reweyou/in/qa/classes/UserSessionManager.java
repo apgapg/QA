@@ -83,7 +83,6 @@ public class UserSessionManager {
         editor.putString(KEY_NAME, username);
         editor.putString(KEY_UID, uid);
         editor.putString(KEY_AUTH_TOKEN, authtoken);
-        editor.putString(KEY_SHORT_INFO, shortinfo);
 
         // commit changes
         editor.commit();

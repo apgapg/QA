@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
         AnncaConfiguration.Builder videoLimited = new AnncaConfiguration.Builder(this, CAPTURE_MEDIA);
         videoLimited.setMediaAction(AnncaConfiguration.MEDIA_ACTION_VIDEO);
         videoLimited.setMediaQuality(AnncaConfiguration.MEDIA_QUALITY_AUTO);
-        videoLimited.setVideoFileSize(10 * 1024 * 1024);
+        videoLimited.setVideoFileSize(12 * 1024 * 1024);
 
         videoLimited.setCameraFace(AnncaConfiguration.CAMERA_FACE_FRONT);
-        videoLimited.setMinimumVideoDuration(100 * 1000);
+        videoLimited.setMinimumVideoDuration(120 * 1000);
         new Annca(videoLimited.build()).launchCamera();
     }
 

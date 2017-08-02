@@ -19,7 +19,6 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="36dp"
             android:scaleType="centerCrop" />
 
         <LinearLayout
@@ -32,42 +31,55 @@
 
             <TextView
                 android:id="@+id/views"
-                android:paddingLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:alpha="0.87"
-                android:textSize="13dp"
                 android:gravity="center_vertical"
+                android:paddingLeft="10dp"
                 android:text="21 views"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:textSize="13dp" />
 
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
+            android:background="@drawable/bottom_bar"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:alpha="0.87"
                 android:gravity="center"
                 android:paddingLeft="12dp"
-
                 android:paddingRight="12dp"
-                android:text="21 UP"
-                android:textStyle="bold" />
+                android:text="21"
+                android:textColor="#fff"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="20dp"
+
+                android:paddingBottom="13dp"
+                android:paddingTop="7dp"
+                app:srcCompat="@drawable/ic_thumb_up" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
+                android:alpha="0.87"
                 android:gravity="center"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:text="5 CO"
-                android:textStyle="bold" />
+                android:textColor="#fff"
+                android:textSize="12dp" />
 
 
         </FrameLayout>

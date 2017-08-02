@@ -19,7 +19,7 @@
         android:background="@color/transparent"
         android:gravity="center"
 
-        android:text="Uploading your post"
+        android:text="Uploading..."
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16dp"
         android:textStyle="bold" />
