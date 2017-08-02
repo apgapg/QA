@@ -13,7 +13,7 @@ android:isScrollContainer="true"
         app:cardBackgroundColor="#fff"
         app:cardCornerRadius="8dp"
         android:layout_margin="8dp"
-        android:layout_height="330dp">
+        android:layout_height="280dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -21,7 +21,7 @@ android:isScrollContainer="true"
 
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".ReplyVideoActivity">
+            tools:mContext=".ReplyVideoActivity">
 
             <qa.reweyou.in.qa.customview.TextViewCustomFont
                 android:layout_width="match_parent"
@@ -43,39 +43,12 @@ android:isScrollContainer="true"
                 android:layout_marginTop="12dp"
                 android:background="#24FF4081" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="6dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="24dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:text="#"
-                    android:textSize="18dp"
-                    android:textColor="#212121"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:background="@android:color/transparent"
-                    android:hint="Give a Tag"
-                    android:minWidth="90dp"
-                    android:paddingLeft="2dp"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.7dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:background="#757575" />

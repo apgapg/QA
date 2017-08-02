@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import qa.model.TopQuestionModel;
+import qa.reweyou.in.qa.model.TopQuestionModel;
 
 /**
  * Created by master on 1/5/17.

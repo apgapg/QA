@@ -1,4 +1,4 @@
-package qa.model;
+package qa.reweyou.in.qa.model;
 
 /**
  * Created by master on 1/8/17.

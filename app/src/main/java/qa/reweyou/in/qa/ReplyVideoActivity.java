@@ -39,25 +39,20 @@ public class ReplyVideoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reply2);
 
         videourl = getIntent().getStringExtra("videopath");
-        quesid= getIntent().getStringExtra("quesid");
+        quesid = getIntent().getStringExtra("quesid");
         file = new File(videourl);
         ImageView imageView = findViewById(R.id.image);
         Glide.with(ReplyVideoActivity.this).load(videourl).into(imageView);
 
 
         userSessionManager = new UserSessionManager(this);
-        hashtag = findViewById(R.id.tag);
         findViewById(R.id.post).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (hashtag.getText().toString().trim().length() > 0) {
-                    custom_upload_dialog = new Custom_upload_dialog();
-                    custom_upload_dialog.setCancelable(false);
-                    custom_upload_dialog.show(getSupportFragmentManager(), "");
-                    uploadPost();
-                } else {
-                    Toast.makeText(ReplyVideoActivity.this, "Please provide a tag to this video", Toast.LENGTH_SHORT).show();
-                }
+                custom_upload_dialog = new Custom_upload_dialog();
+                custom_upload_dialog.setCancelable(false);
+                custom_upload_dialog.show(getSupportFragmentManager(), "");
+                uploadPost();
             }
         });
 
@@ -66,11 +61,10 @@ public class ReplyVideoActivity extends AppCompatActivity {
 
     private void uploadPost() {
         AndroidNetworking.upload(url)
-                .addMultipartFile("video", file)
+                .addMultipartFile("myFile", file)
                 .addMultipartParameter("uid", userSessionManager.getUID())
-                .addMultipartParameter("authtoken", userSessionManager.getAuthToken())
-                .addMultipartParameter("hashtag", hashtag.getText().toString())
-                .addMultipartParameter("quesid",Utils.QUES_ID)
+                .addMultipartParameter("auth", userSessionManager.getAuthToken())
+                .addMultipartParameter("queid", Utils.QUES_ID)
                 .setTag("uploadTest")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -85,16 +79,20 @@ public class ReplyVideoActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d(TAG, "onResponse: " + response);
-                        custom_upload_dialog.dismiss();
-                        Toast.makeText(ReplyVideoActivity.this,"upload success",Toast.LENGTH_SHORT).show();
-                        finish();
+                        if (response.contains("Successfully Uploaded")) {
+                            custom_upload_dialog.dismiss();
+                            Toast.makeText(ReplyVideoActivity.this, "upload success", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }else                         Toast.makeText(ReplyVideoActivity.this, "something went wrong!", Toast.LENGTH_SHORT).show();
+
+
                     }
 
                     @Override
                     public void onError(ANError anError) {
                         Log.e(TAG, "onError: " + anError);
                         custom_upload_dialog.dismiss();
-                        Toast.makeText(ReplyVideoActivity.this,"upload error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReplyVideoActivity.this, "upload error", Toast.LENGTH_SHORT).show();
 
                     }
                 });

@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import qa.model.TopQuestionModel;
+import qa.reweyou.in.qa.model.TopQuestionModel;
 import qa.reweyou.in.qa.NewQuesAdapter;
 import qa.reweyou.in.qa.R;
 import qa.reweyou.in.qa.TopQuesAdapter;

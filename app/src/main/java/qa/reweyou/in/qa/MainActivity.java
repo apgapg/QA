@@ -32,27 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
 
         viewPager = findViewById(R.id.viewpager);
-       pagerAdapter=new PagerAdapter(getSupportFragmentManager());
-       viewPager.setAdapter(pagerAdapter);
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
     }
 
     @SuppressLint("MissingPermission")
     public void shootvideo(String quesid) {
-        Utils.QUES_ID=quesid;
-        //  File saveFolder = new File(Environment.getExternalStorageDirectory(), "Reweyous");
-      /*  if (!saveFolder.mkdirs())
-            throw new RuntimeException("Unable to create save directory, make sure WRITE_EXTERNAL_STORAGE permission is granted.");
-*/
-       /* new MaterialCamera(this)
-                .countdownMinutes(1.5f)
-                .defaultToFrontFacing(true)
-                .allowChangeCamera(true)
-                // Sets a custom bit rate for audio recording.
-
-                .qualityProfile(MaterialCamera.QUALITY_480P)       // Sets a quality profile, manually setting bit rates or frame rates with other settings will overwrite individual quality profile settings
-
-                .start(CAMERA_RQ);*/
-
+        Utils.QUES_ID = quesid;
         AnncaConfiguration.Builder videoLimited = new AnncaConfiguration.Builder(this, CAPTURE_MEDIA);
         videoLimited.setMediaAction(AnncaConfiguration.MEDIA_ACTION_VIDEO);
         videoLimited.setMediaQuality(AnncaConfiguration.MEDIA_QUALITY_AUTO);
@@ -80,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSecondPage(String queid, String question) {
-        ((ReplyFragment) pagerAdapter.getRegisteredFragment(1)).showdata(queid,question);
+        ((ReplyFragment) pagerAdapter.getRegisteredFragment(1)).showdata(queid, question);
         viewPager.setCurrentItem(1);
     }
 
