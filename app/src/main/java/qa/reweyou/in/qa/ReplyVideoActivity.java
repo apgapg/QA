@@ -1,7 +1,9 @@
 package qa.reweyou.in.qa;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +16,8 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.io.File;
 
@@ -52,18 +56,26 @@ public class ReplyVideoActivity extends AppCompatActivity {
                 custom_upload_dialog = new Custom_upload_dialog();
                 custom_upload_dialog.setCancelable(false);
                 custom_upload_dialog.show(getSupportFragmentManager(), "");
-                uploadPost();
+
+                Glide.with(ReplyVideoActivity.this).load(videourl).asBitmap().toBytes(Bitmap.CompressFormat.JPEG, 90).override(500, 500).into(new SimpleTarget<byte[]>() {
+                    @Override
+                    public void onResourceReady(byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {
+                        uploadPost(Base64.encodeToString(resource, Base64.DEFAULT));
+                    }
+                });
+
             }
         });
 
 
     }
 
-    private void uploadPost() {
+    private void uploadPost(String encodedImage) {
         AndroidNetworking.upload(url)
                 .addMultipartFile("myFile", file)
                 .addMultipartParameter("uid", userSessionManager.getUID())
                 .addMultipartParameter("auth", userSessionManager.getAuthToken())
+                .addMultipartParameter("image", encodedImage)
                 .addMultipartParameter("queid", Utils.QUES_ID)
                 .setTag("uploadTest")
                 .setPriority(Priority.HIGH)
@@ -83,7 +95,8 @@ public class ReplyVideoActivity extends AppCompatActivity {
                             custom_upload_dialog.dismiss();
                             Toast.makeText(ReplyVideoActivity.this, "upload success", Toast.LENGTH_SHORT).show();
                             finish();
-                        }else                         Toast.makeText(ReplyVideoActivity.this, "something went wrong!", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(ReplyVideoActivity.this, "something went wrong!", Toast.LENGTH_SHORT).show();
 
 
                     }

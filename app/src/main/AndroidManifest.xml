@@ -78,7 +78,7 @@
             android:name=".ReplyVideoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Transparent"
-            android:windowSoftInputMode="adjustPan|stateVisible"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 </manifest>

@@ -10,16 +10,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.devbrackets.android.exomedia.listener.OnCompletionListener;
 import com.devbrackets.android.exomedia.listener.OnErrorListener;
 import com.devbrackets.android.exomedia.listener.OnPreparedListener;
-import com.devbrackets.android.exomedia.ui.widget.EMVideoView;
+import com.devbrackets.android.exomedia.ui.widget.VideoView;
 
 import qa.reweyou.in.qa.customview.AlertDialogBox;
 
 
 public class VideoDisplay extends AppCompatActivity implements OnPreparedListener {
 
-    private EMVideoView emVideoView;
+    private VideoView emVideoView;
     private TextView headline;
     private TextView description;
 
@@ -48,17 +49,15 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
         String url = i.getStringExtra("url");
 
 
-
-
-
         Log.d("ewdwefdwef", url);
 
-        emVideoView = (EMVideoView) findViewById(R.id.video_view);
+        emVideoView = (VideoView) findViewById(R.id.video_view);
         emVideoView.setOnPreparedListener(this);
         Log.d("ewdwefdweswqdqwf", String.valueOf(emVideoView.getBufferPercentage()));
+
         emVideoView.setOnErrorListener(new OnErrorListener() {
             @Override
-            public boolean onError() {
+            public boolean onError(Exception e) {
                 emVideoView.stopPlayback();
                 {
                     AlertDialogBox alertDialogBox = new AlertDialogBox(VideoDisplay.this, "Error", "Can't play video.", "okay", null) {
@@ -81,6 +80,12 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
                 return false;
             }
         });
+        emVideoView.setOnCompletionListener(new OnCompletionListener() {
+            @Override
+            public void onCompletion() {
+                emVideoView.restart();
+            }
+        });
         emVideoView.getVideoControls().setCanHide(false);
         //For now we just picked an arbitrary item to play.  More can be found at
         //https://archive.org/details/more_animation
@@ -99,6 +104,7 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
         super.onPause();
         emVideoView.pause();
     }
+
 
     @Override
     protected void onResume() {

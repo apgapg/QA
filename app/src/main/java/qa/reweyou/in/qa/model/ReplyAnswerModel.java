@@ -13,9 +13,14 @@ private String answer;
 private String upvotes;
 private String time;
 private String views;
+private String thumbnail;
 private String uid;
 private String comments;
 private String visibility;
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
 
     public String getTime() {
         return time;

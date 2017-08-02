@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -42,7 +43,11 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ReplyAnswerViewHolder replyAnswerViewHolder = (ReplyAnswerViewHolder) holder;
-        Glide.with(mContext).load(messagelist.get(position).getAnswer()).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(replyAnswerViewHolder.image);
+        Glide.with(mContext).load(messagelist.get(position).getThumbnail()).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(replyAnswerViewHolder.image);
+        if (messagelist.get(position).getViews().equals("0")) {
+            replyAnswerViewHolder.views.setText("no views");
+        } else replyAnswerViewHolder.views.setText(messagelist.get(position).getViews() + " views");
+
     }
 
     @Override
@@ -61,11 +66,13 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         private CardView cv;
         private ImageView image;
+        private TextView views;
 
         public ReplyAnswerViewHolder(View inflate) {
             super(inflate);
             cv = inflate.findViewById(R.id.cv);
             image = inflate.findViewById(R.id.image);
+            views = inflate.findViewById(R.id.views);
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

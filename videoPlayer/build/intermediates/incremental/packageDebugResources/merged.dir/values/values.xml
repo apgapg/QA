@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="exomedia_default_controls_button_disabled">#FF757575</color>
+    <color name="exomedia_default_controls_button_normal">#FFFFFFFF</color>
+    <color name="exomedia_default_controls_button_pressed">#FFE0E0E0</color>
+    <color name="exomedia_leanback_progress_horizontal_background">#19FFFFFF</color>
+    <color name="exomedia_leanback_progress_horizontal_progress_placeholder">#FF43B2E5</color>
+    <color name="exomedia_leanback_progress_horizontal_progress_secondary">#33FFFFFF</color>
+    <declare-styleable name="VideoView"><attr format="boolean" name="useDefaultControls"/><attr format="boolean" name="useTextureViewBacking"/><attr format="reference" name="videoViewApiImpl"/><attr format="reference" name="videoViewApiImplLegacy"/><attr format="boolean" name="measureBasedOnAspectRatio"/><attr format="enum" name="videoScale">
+            <enum name="center" value="0"/>
+            <enum name="centerCrop" value="1"/>
+            <enum name="centerInside" value="2"/>
+            <enum name="fitCenter" value="3"/>
+            <enum name="none" value="4"/>
+        </attr></declare-styleable>
+    <dimen name="exomedia_leanback_controls_bottom_margin">64dp</dimen>
+    <dimen name="exomedia_leanback_controls_height">64dp</dimen>
+    <dimen name="exomedia_leanback_controls_horizontal_margin">132dp</dimen>
+    <dimen name="exomedia_leanback_ripple_selector_size">90dp</dimen>
+    <dimen name="exomedia_min_button_height">44dp</dimen>
+</resources>

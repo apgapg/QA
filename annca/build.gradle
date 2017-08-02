@@ -20,10 +20,10 @@ ext {
     PUBLISH_ARTIFACT_ID = 'annca'
     PUBLISH_VERSION = '0.3.7'
     PUBLISH_VERSION_CODE = 11
-    SUPPORT_VERSION = '25.3.1'
-    TARGET_SDK = 24
-    MIN_SDK = 10
-    BUILD_TOOLS = "25.0.2"
+    SUPPORT_VERSION = '26.0.0'
+    TARGET_SDK = 26
+    MIN_SDK = 15
+    BUILD_TOOLS = "26.0.1"
 }
 
 android {

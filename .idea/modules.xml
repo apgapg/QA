@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/QA.iml" filepath="$PROJECT_DIR$/QA.iml" />
       <module fileurl="file://$PROJECT_DIR$/annca/annca.iml" filepath="$PROJECT_DIR$/annca/annca.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/videoPreviewLib/videoPreviewLib.iml" filepath="$PROJECT_DIR$/videoPreviewLib/videoPreviewLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videoPlayer/videoPlayer.iml" filepath="$PROJECT_DIR$/videoPlayer/videoPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/videoshootlibrary/videoshootlibrary.iml" filepath="$PROJECT_DIR$/videoshootlibrary/videoshootlibrary.iml" />
     </modules>
   </component>
