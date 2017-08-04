@@ -18,6 +18,8 @@ import java.util.List;
 
 import qa.reweyou.in.qa.R;
 import qa.reweyou.in.qa.VideoDisplay;
+import qa.reweyou.in.qa.classes.RequestHelper;
+import qa.reweyou.in.qa.classes.UserSessionManager;
 import qa.reweyou.in.qa.model.ReplyAnswerModel;
 
 /**
@@ -28,11 +30,14 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private static final String TAG = ReplyAdapter.class.getName();
     private final Context mContext;
+    private final UserSessionManager userSessionManager;
     List<ReplyAnswerModel> messagelist;
 
     public ReplyAdapter(Context mContext) {
         this.mContext = mContext;
         this.messagelist = new ArrayList<>();
+        userSessionManager = new UserSessionManager(mContext);
+
     }
 
     @Override
@@ -48,6 +53,8 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             replyAnswerViewHolder.views.setText("no views");
         } else replyAnswerViewHolder.views.setText(messagelist.get(position).getViews() + " views");
 
+        replyAnswerViewHolder.reply.setText(messagelist.get(position).getComments());
+        replyAnswerViewHolder.likes.setText(messagelist.get(position).getUpvotes());
     }
 
     @Override
@@ -67,19 +74,25 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private CardView cv;
         private ImageView image;
         private TextView views;
+        private TextView reply, likes;
 
         public ReplyAnswerViewHolder(View inflate) {
             super(inflate);
             cv = inflate.findViewById(R.id.cv);
             image = inflate.findViewById(R.id.image);
             views = inflate.findViewById(R.id.views);
+            reply = inflate.findViewById(R.id.reply);
+            likes = inflate.findViewById(R.id.likes);
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    RequestHelper.incrementViewsRequest(messagelist.get(getAdapterPosition()).getAnsid(), userSessionManager.getUID(), userSessionManager.getAuthToken());
 
                     Intent i = new Intent(mContext, VideoDisplay.class);
                     i.putExtra("url", messagelist.get(getAdapterPosition()).getAnswer());
+                    i.putExtra("ansid", messagelist.get(getAdapterPosition()).getAnsid());
                     mContext.startActivity(i);
+
 
                 }
             });

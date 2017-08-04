@@ -20,7 +20,9 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import qa.reweyou.in.qa.classes.UserSessionManager;
 import qa.reweyou.in.qa.customview.Custom_upload_dialog;
 import qa.reweyou.in.qa.utils.Utils;
@@ -71,6 +73,14 @@ public class ReplyVideoActivity extends AppCompatActivity {
     }
 
     private void uploadPost(String encodedImage) {
+
+         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+
         AndroidNetworking.upload(url)
                 .addMultipartFile("myFile", file)
                 .addMultipartParameter("uid", userSessionManager.getUID())
@@ -79,6 +89,7 @@ public class ReplyVideoActivity extends AppCompatActivity {
                 .addMultipartParameter("queid", Utils.QUES_ID)
                 .setTag("uploadTest")
                 .setPriority(Priority.HIGH)
+                .setOkHttpClient(okHttpClient)
                 .build()
                 .setUploadProgressListener(new UploadProgressListener() {
                     @Override
