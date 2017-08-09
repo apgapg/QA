@@ -15,7 +15,6 @@ import com.androidnetworking.interfaces.StringRequestListener;
 
 import qa.reweyou.in.qa.classes.UserSessionManager;
 import qa.reweyou.in.qa.customview.Custom_upload_dialog;
-import qa.reweyou.in.qa.utils.NetworkHandler;
 
 public class AskQuestion extends AppCompatActivity {
 
@@ -64,6 +63,7 @@ public class AskQuestion extends AppCompatActivity {
 
                         custom_upload_dialog.dismiss();
                         if(response.contains("Successfully uploaded")){
+                            Toast.makeText(AskQuestion.this,"Question Posted successfully",Toast.LENGTH_SHORT).show();
                             finish();
                         }else Toast.makeText(AskQuestion.this,"Something went wrong!",Toast.LENGTH_SHORT).show();
                     }
