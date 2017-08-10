@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingTop="30dp"
+    tools:context="in.reweyou.reweyouforums.CommentActivity">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:clipToPadding="false"
+            android:paddingBottom="72dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <qa.reweyou.in.qa.customview.TextViewCustomFont
+        android:id="@+id/commenttxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:gravity="center"
+        android:paddingTop="1dp"
+        android:text="No comments yet\nBe the first one to comment"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13dp"
+
+        android:visibility="gone" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_above="@+id/edittext"
+        android:background="#757575" />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:minHeight="48dp"
+        android:paddingLeft="12dp"
+        android:textColor="#212121"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/send"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginRight="6dp"
+        android:padding="4dp"
+        app:srcCompat="@drawable/button_send_disable" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        android:padding="8dp"
+        android:visibility="gone" />
+</RelativeLayout>

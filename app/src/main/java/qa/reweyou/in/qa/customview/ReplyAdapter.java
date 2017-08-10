@@ -91,6 +91,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     Intent i = new Intent(mContext, VideoDisplay.class);
                     i.putExtra("url", messagelist.get(getAdapterPosition()).getAnswer());
                     i.putExtra("ansid", messagelist.get(getAdapterPosition()).getAnsid());
+                    i.putExtra("queid", messagelist.get(getAdapterPosition()).getQueid());
                     mContext.startActivity(i);
 
 

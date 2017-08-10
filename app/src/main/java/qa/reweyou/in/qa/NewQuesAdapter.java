@@ -40,7 +40,7 @@ public class NewQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         newQuesHolder.textques.setText(messagelist.get(position).getQuestion());
         newQuesHolder.textcomment.setText(messagelist.get(position).getAnswers()+" Ans");
         newQuesHolder.texthashtag.setText("#"+messagelist.get(position).getHashtag());
-
+//newQuesHolder.textuser.setText(messagelist.get(position).);
 
 
     }
@@ -63,7 +63,7 @@ public class NewQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         private TextView textques;
         private TextView textcomment;
         private TextView textlike;
-        private TextView textnoviews, texthashtag;
+        private TextView textnoviews, texthashtag,textuser;
 
         public NewQuesHolder(View inflate) {
             super(inflate);
@@ -72,6 +72,7 @@ public class NewQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             textlike = inflate.findViewById(R.id.textlike);
             textques = inflate.findViewById(R.id.textques);
             texthashtag = inflate.findViewById(R.id.texthashtag);
+            textuser = inflate.findViewById(R.id.textuser);
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -10,12 +10,13 @@
     tools:showIn="@layout/activity_video_display">
 
 
-    <com.devbrackets.android.exomedia.ui.widget.VideoView
-        android:id="@+id/video_view"
+    <com.afollestad.easyvideoplayer.EasyVideoPlayer xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:useDefaultControls="true" />
+        android:layout_height="match_parent"
+        app:evp_autoPlay="true"
+        app:evp_hideControlsOnPlay="true"
+        app:evp_loop="true" />
 
     <ImageView
         android:id="@+id/gradient"
@@ -23,7 +24,7 @@
         android:layout_height="72dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="138dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/gradient_circular_black"
         android:scaleX="0"
@@ -35,7 +36,7 @@
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="150dp"
         android:layout_marginRight="24dp"
         android:background="@drawable/solid_circle_white"
         android:padding="12dp"
@@ -43,4 +44,18 @@
         android:scaleY="0"
         app:srcCompat="@drawable/ic_thumb_up_like" />
 
+
+    <ImageView
+        android:id="@+id/comment"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/solid_circle_white"
+        android:padding="12dp"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
 </RelativeLayout>

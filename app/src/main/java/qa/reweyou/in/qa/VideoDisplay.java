@@ -1,6 +1,5 @@
 package qa.reweyou.in.qa;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,28 +13,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.easyvideoplayer.EasyVideoCallback;
+import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
-import com.devbrackets.android.exomedia.listener.OnCompletionListener;
-import com.devbrackets.android.exomedia.listener.OnErrorListener;
 import com.devbrackets.android.exomedia.listener.OnPreparedListener;
 import com.devbrackets.android.exomedia.ui.widget.VideoView;
 
 import qa.reweyou.in.qa.classes.UserSessionManager;
-import qa.reweyou.in.qa.customview.AlertDialogBox;
 
 
-public class VideoDisplay extends AppCompatActivity implements OnPreparedListener {
+public class VideoDisplay extends AppCompatActivity implements EasyVideoCallback {
 
     private VideoView emVideoView;
-    private TextView headline;
-    private TextView description;
-    private ImageView like,gradient;
+
+    private ImageView like, gradient;
     private UserSessionManager userSessionManager;
     private String ansid;
     private String TAG = VideoDisplay.class.getName();
+    private EasyVideoPlayer player;
+    private String queid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +69,10 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
         Intent i = getIntent();
         String url = i.getStringExtra("url");
         ansid = i.getStringExtra("ansid");
+        queid = i.getStringExtra("queid");
 
 
-        emVideoView = (VideoView) findViewById(R.id.video_view);
+      /*  emVideoView = (VideoView) findViewById(R.id.video_view);
         emVideoView.setOnPreparedListener(this);
 
         emVideoView.setOnErrorListener(new OnErrorListener() {
@@ -109,8 +109,28 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
         emVideoView.getVideoControls().setCanHide(false);
         //For now we just picked an arbitrary item to play.  More can be found at
         //https://archive.org/details/more_animation
-        emVideoView.setVideoURI(Uri.parse(url));
+        emVideoView.setVideoURI(Uri.parse(url));*/
 
+
+        player = (EasyVideoPlayer) findViewById(R.id.player);
+
+        // Sets the callback to this Activity, since it inherits EasyVideoCallback
+        player.setCallback(this);
+
+        // Sets the source to the HTTP URL held in the TEST_URL variable.
+        // To play files, you can use Uri.fromFile(new File("..."))
+        player.setSource(Uri.parse(url));
+
+
+        findViewById(R.id.comment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(VideoDisplay.this, CommentActivity.class);
+                i.putExtra("ansid", ansid);
+                i.putExtra("queid", queid);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -136,7 +156,7 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
                 });
     }
 
-    @Override
+   /* @Override
     public void onPrepared() {
         //Starts the video playback as soon as it is ready
         emVideoView.start();
@@ -145,22 +165,83 @@ public class VideoDisplay extends AppCompatActivity implements OnPreparedListene
             @Override
             public void run() {
                 like.animate().scaleX(1).scaleY(1).setInterpolator(new AccelerateDecelerateInterpolator()).setDuration(300).start();
-               gradient.animate().scaleX(1).scaleY(1).setInterpolator(new AccelerateDecelerateInterpolator()).setDuration(300).start();
+                gradient.animate().scaleX(1).scaleY(1).setInterpolator(new AccelerateDecelerateInterpolator()).setDuration(300).start();
 
             }
         }, 1000);
 
-    }
+    }*/
 
-    @Override
+    /*@Override
     protected void onPause() {
         super.onPause();
         emVideoView.pause();
     }
-
+*/
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onStarted(EasyVideoPlayer player) {
+
+    }
+
+    @Override
+    public void onPaused(EasyVideoPlayer player) {
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Make sure the player stops playing if the user presses the home button.
+        player.pause();
+    }
+
+    @Override
+    public void onPreparing(EasyVideoPlayer player) {
+
+    }
+
+    @Override
+    public void onPrepared(EasyVideoPlayer player) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                like.animate().scaleX(1).scaleY(1).setInterpolator(new AccelerateDecelerateInterpolator()).setDuration(300).start();
+                gradient.animate().scaleX(1).scaleY(1).setInterpolator(new AccelerateDecelerateInterpolator()).setDuration(300).start();
+
+            }
+        }, 1000);
+
+
+    }
+
+    @Override
+    public void onBuffering(int percent) {
+
+    }
+
+    @Override
+    public void onError(EasyVideoPlayer player, Exception e) {
+
+    }
+
+    @Override
+    public void onCompletion(EasyVideoPlayer player) {
+
+    }
+
+    @Override
+    public void onRetry(EasyVideoPlayer player, Uri source) {
+
+    }
+
+    @Override
+    public void onSubmit(EasyVideoPlayer player, Uri source) {
+
     }
 }

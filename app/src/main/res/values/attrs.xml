@@ -4,4 +4,83 @@
         <attr name="wave_speed" format="integer" />
         <attr name="wave_height" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="CircularImageView">
+        <attr name="myborderWidth" format="dimension" />
+        <attr name="myborderColor" format="color" />
+        <attr name="myborderOverlay" format="boolean" />
+        <attr name="myfillColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="refresh_PullRefreshLayout">
+        <attr name="refreshType" format="enum">
+            <enum name="material" value="0" />
+            <enum name="circles" value="1" />
+            <enum name="water_drop" value="2" />
+            <enum name="ring" value="3" />
+            <enum name="smartisan" value="4" />
+        </attr>
+        <attr name="refreshColors" format="reference" />
+        <attr name="refreshColor" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FreeDrawView">
+        <attr name="paintColor" format="color" />
+        <attr name="paintWidth" format="dimension" />
+        <attr name="paintAlpha" format="integer" />
+        <attr name="resizeBehaviour" format="enum">
+            <enum name="clear" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="crop" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <attr name="mentionTextColor" format="color" />
+    <attr name="mentionTextBackgroundColor" format="color" />
+    <attr name="selectedMentionTextColor" format="color" />
+    <attr name="selectedMentionTextBackgroundColor" format="color" />
+
+    <declare-styleable name="MentionsEditText">
+        <attr name="mentionTextColor" />
+        <attr name="mentionTextBackgroundColor" />
+        <attr name="selectedMentionTextColor" />
+        <attr name="selectedMentionTextBackgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="RichEditorView">
+        <attr name="mentionTextColor" />
+        <attr name="mentionTextBackgroundColor" />
+        <attr name="selectedMentionTextColor" />
+        <attr name="selectedMentionTextBackgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ColorTextView">
+        <attr name="color_texts" format="string" />
+        <attr name="color_arrays" format="string" />
+    </declare-styleable>
+    <declare-styleable name="SnappingRecyclerView">
+        <attr name="orientation" />
+        <attr name="anchor" />
+        <attr name="scrollSpeed" format="float" />
+        <attr name="flingThreshold" format="integer" />
+    </declare-styleable>
+
+    <attr name="orientation">
+        <enum name="vertical" value="0" />
+        <enum name="horizontal" value="1" />
+    </attr>
+
+    <attr name="anchor">
+        <enum name="center" value="0" />
+        <enum name="start" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <declare-styleable name="RecyclerViewPager">
+        <attr name="rvp_triggerOffset" format="float" />
+        <attr name="rvp_flingFactor" format="float" />
+        <attr name="rvp_singlePageFling" format="boolean" />
+        <attr name="rvp_inertia" format="boolean" />
+        <attr name="rvp_millisecondsPerInch" format="float" />
+    </declare-styleable>
 </resources>
