@@ -10,13 +10,23 @@ public class CommentModel {
     private String comment;
     private String commentid;
     private String imageurl;
-    private String timestamp;
+    private String time;
     private String badge;
     private String points;
     private String uid;
     private String upvotes;
     private String status = "false";
     private String tags = "";
+private String queid;
+private String ansid;
+
+    public String getAnsid() {
+        return ansid;
+    }
+
+    public String getQueid() {
+        return queid;
+    }
 
     public String getTags() {
         return tags;
@@ -49,8 +59,8 @@ public class CommentModel {
         return points;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getTime() {
+        return time;
     }
 
     public String getImageurl() {

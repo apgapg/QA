@@ -27,8 +27,6 @@ import com.androidnetworking.interfaces.StringRequestListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,13 +73,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         commentViewHolder.comment.setText(commentModel.getComment());
 
 
-        commentViewHolder.time.setText(commentModel.getTimestamp().replace("about ", ""));
+        commentViewHolder.time.setText(commentModel.getTime().replace("about ", ""));
 
         if (((CommentModel) messagelist.get(position)).getUid().equals(userSessionManager.getUID()))
             commentViewHolder.edit.setVisibility(View.VISIBLE);
         else commentViewHolder.edit.setVisibility(View.INVISIBLE);
         Glide.with(mContext).load(((CommentModel) messagelist.get(position)).getImageurl()).error(R.drawable.download).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(commentViewHolder.image);
-        commentViewHolder.userlevel.setText(((CommentModel) messagelist.get(position)).getBadge());
         commentViewHolder.likenumber.setText(((CommentModel) messagelist.get(position)).getUpvotes());
         if (((CommentModel) messagelist.get(position)).getStatus().equals("true")) {
             commentViewHolder.like.setImageResource(R.drawable.ic_heart_like);
@@ -102,7 +99,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             CommentViewHolder holder = (CommentViewHolder) holder1;
             ((CommentModel) messagelist.get(position)).setStatus("true");
             holder.like.setImageResource(R.drawable.ic_heart_like);
-            holder.liketemp.animate().rotation(-80).setDuration(650).alpha(0.0f).translationYBy(-Utils.pxFromDp(mContext,16)).translationXBy(-Utils.pxFromDp(mContext,70)).setInterpolator(new DecelerateInterpolator()).start();
+            holder.liketemp.animate().rotation(-80).setDuration(650).alpha(0.0f).translationYBy(-Utils.pxFromDp(mContext, 16)).translationXBy(-Utils.pxFromDp(mContext, 70)).setInterpolator(new DecelerateInterpolator()).start();
             holder.likenumber.setText(String.valueOf(Integer.parseInt(((CommentModel) messagelist.get(position)).getUpvotes()) + 1));
             ((CommentModel) messagelist.get(position)).setUpvotes(String.valueOf(Integer.parseInt(((CommentModel) messagelist.get(position)).getUpvotes()) + 1));
 
@@ -227,7 +224,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         if (response.contains("Edited")) {
                             Toast.makeText(mContext, "comment updated!", Toast.LENGTH_SHORT).show();
 
-                                ((CommentActivity) mContext).refreshlist();
+                            ((CommentActivity) mContext).refreshlist();
 
                         } else
                             Toast.makeText(mContext, "something went wrong!", Toast.LENGTH_SHORT).show();
@@ -245,10 +242,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     private void sendrequestforlikecomment(final int adapterPosition) {
-        AndroidNetworking.post("https://www.reweyou.in/google/like.php")
+        AndroidNetworking.post("https://www.reweyou.in/interview/upvote.php")
                 .addBodyParameter("uid", userSessionManager.getUID())
                 .addBodyParameter("imageurl", userSessionManager.getProfilePicture())
                 .addBodyParameter("username", userSessionManager.getUsername())
+                .addBodyParameter("queid", ((CommentModel) messagelist.get(adapterPosition)).getQueid())
+                .addBodyParameter("ansid", ((CommentModel) messagelist.get(adapterPosition)).getAnsid())
                 .addBodyParameter("commentid", ((CommentModel) messagelist.get(adapterPosition)).getCommentid())
                 .addBodyParameter("authtoken", userSessionManager.getAuthToken())
                 .setTag("reportlike")
@@ -275,7 +274,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
-   private class CommentViewHolder extends RecyclerView.ViewHolder {
+    private class CommentViewHolder extends RecyclerView.ViewHolder {
         private TextView comment;
         private TextView reply;
         private ImageView image, like, liketemp;

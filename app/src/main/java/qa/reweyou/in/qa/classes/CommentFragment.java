@@ -235,7 +235,7 @@ public class CommentFragment extends Fragment {
                                         if (!mContext.isFinishing()) {
 
                                             mContext.setResult(Activity.RESULT_OK);
-                                            if (response.contains("Comment created")) {
+                                            if (response.contains("Successfully uploaded")) {
                                                 editText.setEnabled(true);
                                                 editText.setText("");
                                                 send.setVisibility(View.VISIBLE);
