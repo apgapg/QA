@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import io.github.memfis19.annca.Annca;
 import io.github.memfis19.annca.internal.configuration.AnncaConfiguration;
+import qa.reweyou.in.qa.classes.ProfileFragment;
+import qa.reweyou.in.qa.classes.SearchFragment;
 import qa.reweyou.in.qa.customview.MainFragment;
 import qa.reweyou.in.qa.customview.ReplyFragment;
 import qa.reweyou.in.qa.utils.Utils;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(1);
     }
 
     @SuppressLint("MissingPermission")
@@ -65,16 +68,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSecondPage(String queid, String question) {
-        ((ReplyFragment) pagerAdapter.getRegisteredFragment(1)).showdata(queid, question);
-        viewPager.setCurrentItem(1);
+        ((ReplyFragment) pagerAdapter.getRegisteredFragment(2)).showdata(queid, question);
+        viewPager.setCurrentItem(2);
     }
 
 
     @Override
     public void onBackPressed() {
-        if (viewPager.getCurrentItem() == 1)
-            viewPager.setCurrentItem(0);
+        if (viewPager.getCurrentItem() != 1)
+            viewPager.setCurrentItem(1);
         else finish();
+    }
+
+    public void showsearchpage() {
+        viewPager.setCurrentItem(3);
+    }
+
+    public void showprofilepage() {
+        viewPager.setCurrentItem(0);
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {
@@ -88,16 +99,20 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new MainFragment();
+                    return new ProfileFragment();
                 case 1:
+                    return new MainFragment();
+                case 2:
                     return new ReplyFragment();
+                case 3:
+                    return new SearchFragment();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 4;
         }
 
         @Override

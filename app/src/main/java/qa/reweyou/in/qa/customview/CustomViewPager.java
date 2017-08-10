@@ -10,7 +10,7 @@ import android.view.MotionEvent;
  */
 
 public class CustomViewPager extends ViewPager {
-    private int pageposition = 0;
+    private int pageposition = 1;
 
     public CustomViewPager(Context context) {
         super(context);
@@ -42,7 +42,7 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (pageposition == 0)
+        if (pageposition == 1)
             return false;
         else
             return super.onInterceptTouchEvent(ev);
@@ -50,7 +50,7 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (pageposition == 0)
+        if (pageposition == 1)
             return true;
         else
             return super.onTouchEvent(ev);

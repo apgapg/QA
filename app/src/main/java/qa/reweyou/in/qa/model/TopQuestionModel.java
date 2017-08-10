@@ -16,6 +16,11 @@ public class TopQuestionModel {
     private String uid="";
     private String status="";
     private String to_uid="";
+    private String username = "";
+
+    public String getUsername() {
+        return username;
+    }
 
     public String getImage() {
         return image;

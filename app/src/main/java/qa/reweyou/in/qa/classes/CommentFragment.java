@@ -82,7 +82,7 @@ public class CommentFragment extends Fragment {
         View layout = inflater.inflate(R.layout.content_comment, container, false);
         Log.d(TAG, "onCreateView: reeeeeeec");
         this.threadid = getArguments().getString("threadid");
-        swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.swiperefresh);
+        swipeRefreshLayout = layout.findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -90,19 +90,19 @@ public class CommentFragment extends Fragment {
             }
         });
 
-        recyclerView = (RecyclerView) layout.findViewById(R.id.recycler_view);
+        recyclerView = layout.findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(linearLayoutManager);
-        progressBar = (ProgressBar) layout.findViewById(R.id.progressBar);
-        send = (ImageView) layout.findViewById(R.id.send);
-        nocommenttxt = (TextView) layout.findViewById(R.id.commenttxt);
+        progressBar = layout.findViewById(R.id.progressBar);
+        send = layout.findViewById(R.id.send);
+        nocommenttxt = layout.findViewById(R.id.commenttxt);
 
         userSessionManager = new UserSessionManager(mContext);
 
         adapterComment = new CommentsAdapter(mContext);
         recyclerView.setAdapter(adapterComment);
 
-        editText = (EditText) layout.findViewById(R.id.edittext);
+        editText = layout.findViewById(R.id.edittext);
 
         editText.setHint("Add a comment...");
 
@@ -129,6 +129,7 @@ public class CommentFragment extends Fragment {
 
                         .setPriority(Priority.HIGH)
                         .build()
+
                         .getAsJSONArray(new JSONArrayRequestListener() {
                             @Override
                             public void onResponse(JSONArray response) {
@@ -183,7 +184,7 @@ public class CommentFragment extends Fragment {
 
                                     swipeRefreshLayout.setRefreshing(false);
 
-                                    Log.d(TAG, "onError: " + anError);
+                                    Log.d(TAG, "onError: " + anError.toString());
                                     Toast.makeText(mContext, "couldn't connect", Toast.LENGTH_SHORT).show();
                                 }
                             }
