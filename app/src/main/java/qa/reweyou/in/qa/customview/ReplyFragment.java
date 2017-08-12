@@ -125,8 +125,9 @@ public class ReplyFragment extends Fragment {
 
                                 replyAdapter.add(list);
 
-                                if (list.isEmpty())
+                                if (list.isEmpty()) {
                                     noansyet.setVisibility(View.VISIBLE);
+                                }
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -138,6 +139,7 @@ public class ReplyFragment extends Fragment {
                     public void onError(ANError anError) {
                         Log.d(TAG, "onError: " + anError);
                         nonettext.setVisibility(View.VISIBLE);
+                        replyAdapter.add(list);
                     }
                 });
 

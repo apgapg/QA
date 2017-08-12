@@ -55,10 +55,10 @@
             android:paddingBottom="38dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="34dp"
+            android:paddingTop="30dp"
             android:text="This is a question"
             android:textColor="#424242"
-            android:textSize="12.5dp" />
+            android:textSize="13.5dp" />
 
 
         <LinearLayout
@@ -85,7 +85,6 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:maxWidth="170dp"
-                android:paddingLeft="2dp"
                 android:text="21"
                 android:textColor="@color/colorAccent"
                 android:textSize="11dp" />

@@ -42,7 +42,7 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (pageposition == 1)
+        if (pageposition == 1 || pageposition == 3)
             return false;
         else
             return super.onInterceptTouchEvent(ev);
@@ -50,7 +50,7 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (pageposition == 1)
+        if (pageposition == 1 || pageposition == 3)
             return true;
         else
             return super.onTouchEvent(ev);
