@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edittext"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="68dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="22dp"
-        android:background="#f4f4f4"
-        android:hint="Search here..."
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:textColor="#212121"
-        android:textSize="13dp" />
+        android:elevation="4dp"
 
-    <ImageView
-        android:id="@+id/search"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="22dp"
-        android:background="#f0f0f0"
-        android:scaleType="center"
-        android:tint="#212121"
-        app:srcCompat="@drawable/ic_youtube_searched_for_black_24dp" />
+        android:orientation="horizontal"
+        tools:targetApi="lollipop">
 
+        <EditText
+            android:id="@+id/edittext"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_search_back"
+            android:hint="Search here..."
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="#212121"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/image_search_back"
+            android:scaleType="center"
+            android:tint="#212121"
+            app:srcCompat="@drawable/ic_youtube_searched_for_black_24dp" />
+
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

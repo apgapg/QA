@@ -38,7 +38,7 @@ public class TopQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TopQuesHolder topQuesHolder = (TopQuesHolder) holder;
 
         // topQuesHolder.textcomment.setText(""+messagelist.get(position).get);
-        topQuesHolder.textlike.setText(messagelist.get(position).getUpvotes() + " Like");
+        topQuesHolder.textlike.setText(messagelist.get(position).getUpvotes());
         topQuesHolder.textques.setText(messagelist.get(position).getQuestion());
         topQuesHolder.textcomment.setText(messagelist.get(position).getAnswers()+" Ans");
         topQuesHolder.texthashtag.setText("#"+messagelist.get(position).getHashtag());

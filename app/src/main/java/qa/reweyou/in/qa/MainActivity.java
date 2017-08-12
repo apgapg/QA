@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(1);
+        viewPager.setOffscreenPageLimit(2);
     }
 
     @SuppressLint("MissingPermission")

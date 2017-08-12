@@ -48,6 +48,8 @@ public class ReplyFragment extends Fragment {
     private UserSessionManager userSessionManager;
     private Gson gson;
     private Context mContext;
+    private View nonettext;
+    private View noansyet;
 
 
     @Override
@@ -68,6 +70,14 @@ public class ReplyFragment extends Fragment {
         replyAdapter = new ReplyAdapter(getActivity());
         recyclerView.setAdapter(replyAdapter);
 
+        noansyet = view.findViewById(R.id.noansyet);
+        nonettext = view.findViewById(R.id.nonettext);
+        nonettext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getData();
+            }
+        });
         view.findViewById(R.id.reply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +100,8 @@ public class ReplyFragment extends Fragment {
 
     private void getData() {
         list.clear();
+        nonettext.setVisibility(View.INVISIBLE);
+        noansyet.setVisibility(View.INVISIBLE);
 
         AndroidNetworking.post("https://www.reweyou.in/interview/single_answer.php")
                 .addBodyParameter("uid", userSessionManager.getUID())
@@ -113,6 +125,9 @@ public class ReplyFragment extends Fragment {
 
                                 replyAdapter.add(list);
 
+                                if (list.isEmpty())
+                                    noansyet.setVisibility(View.VISIBLE);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -122,7 +137,7 @@ public class ReplyFragment extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         Log.d(TAG, "onError: " + anError);
-
+                        nonettext.setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -133,7 +148,7 @@ public class ReplyFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity)
-            mContext = (Activity) context;
+            mContext = context;
         else throw new IllegalArgumentException("Context should be an instance of Activity");
     }
 

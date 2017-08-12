@@ -36,7 +36,7 @@ public class NewQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         NewQuesHolder newQuesHolder = (NewQuesHolder) holder;
-        newQuesHolder.textlike.setText(messagelist.get(position).getUpvotes() + " Like");
+        newQuesHolder.textlike.setText(messagelist.get(position).getUpvotes());
         newQuesHolder.textques.setText(messagelist.get(position).getQuestion());
         newQuesHolder.textcomment.setText(messagelist.get(position).getAnswers() + " Ans");
         newQuesHolder.texthashtag.setText("#" + messagelist.get(position).getHashtag());

@@ -4,37 +4,69 @@
     android:layout_height="match_parent">
 
     <qa.reweyou.in.qa.customview.TextViewCustomFont
+        android:id="@+id/ques"
         android:layout_width="match_parent"
         android:layout_height="192dp"
-        android:id="@+id/ques"
         android:gravity="center"
-        android:textSize="16dp"
         android:padding="16dp"
         android:text=""
         android:textColor="#fff"
-        android:textStyle="bold" />
+        android:textSize="16dp" />
+
+
+    <qa.reweyou.in.qa.customview.TextViewCustomFont
+        android:id="@+id/noansyet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="274dp"
+        android:gravity="center"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="No Answer yet\n
+Be the first one to answer"
+        android:textColor="#757575"
+        android:textSize="14dp"
+
+        />
+
+    <qa.reweyou.in.qa.customview.TextViewCustomFont
+        android:id="@+id/nonettext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="274dp"
+        android:gravity="center"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="Network error\n
+Tap to retry"
+        android:textColor="#757575"
+        android:textSize="14dp"
+
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:clipToPadding="false"
         android:layout_marginBottom="40dp"
+        android:clipToPadding="false"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
         android:paddingTop="222dp" />
-
 
 
     <qa.reweyou.in.qa.customview.TextViewCustomFont
         android:id="@+id/reply"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textColor="#fff"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textSize="14dp"
-        android:text="Post Your Reply"/>
+        android:text="Post Your Reply"
+        android:textColor="#fff"
+        android:textSize="14dp" />
 
 </RelativeLayout>
