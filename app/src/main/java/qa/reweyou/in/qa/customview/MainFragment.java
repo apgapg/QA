@@ -126,7 +126,7 @@ public class MainFragment extends Fragment {
     private void getData2() {
         list2.clear();
 
-        AndroidNetworking.post("https://www.reweyou.in/interview/new_questions.php")
+        AndroidNetworking.post("https://www.reweyou.in/interview/top_questions.php")
                 .addBodyParameter("uid", userSessionManager.getUID())
                 .addBodyParameter("authtoken", userSessionManager.getAuthToken())
                 .setTag("fetchgroups")
@@ -166,7 +166,7 @@ public class MainFragment extends Fragment {
     private void getData() {
         list.clear();
 
-        AndroidNetworking.post("https://www.reweyou.in/interview/top_questions.php")
+        AndroidNetworking.post("https://www.reweyou.in/interview/new_questions.php")
                 .addBodyParameter("uid", userSessionManager.getUID())
                 .addBodyParameter("authtoken", userSessionManager.getAuthToken())
                 .setTag("fetchgroups")

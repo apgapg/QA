@@ -18,8 +18,8 @@
             android:id="@+id/texthashtag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
-
             android:maxLines="1"
             android:paddingLeft="8dp"
 
@@ -39,12 +39,12 @@
 
             android:maxLines="1"
             android:maxWidth="170dp"
-
             android:paddingRight="8dp"
             android:paddingTop="4dp"
             android:text="Username"
             android:textColor="#757575"
-            android:textSize="11dp" />
+            android:textSize="11dp"
+            android:visibility="gone" />
 
         <qa.reweyou.in.qa.customview.TextViewCustomFont
             android:id="@+id/textques"
