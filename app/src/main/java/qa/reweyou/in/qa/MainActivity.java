@@ -1,6 +1,6 @@
 package qa.reweyou.in.qa;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 import io.github.memfis19.annca.Annca;
 import io.github.memfis19.annca.internal.configuration.AnncaConfiguration;
@@ -40,8 +45,26 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(2);
     }
 
-    @SuppressLint("MissingPermission")
-    public void shootvideo(String quesid) {
+    public void shootvideo(final String quesid) {
+        new TedPermission(this)
+                .setPermissionListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        startRecord(quesid);
+                    }
+
+                    @Override
+                    public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                        Toast.makeText(MainActivity.this, "Please provide all permissions!", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .check();
+    }
+
+    private void startRecord(String quesid) {
         Utils.QUES_ID = quesid;
         AnncaConfiguration.Builder videoLimited = new AnncaConfiguration.Builder(this, CAPTURE_MEDIA);
         videoLimited.setMediaAction(AnncaConfiguration.MEDIA_ACTION_VIDEO);

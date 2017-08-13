@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="216dp"
@@ -48,7 +47,7 @@
             android:layout_height="140dp"
             android:layout_marginTop="40dp"
             android:clipToPadding="false"
-            android:paddingLeft="2dp"/>
+            android:paddingLeft="2dp" />
 
 
         <qa.reweyou.in.qa.customview.TextViewCustomFont
@@ -59,6 +58,15 @@
             android:text="Top Questions"
             android:textColor="#fff"
             android:textSize="16dp" />
+
+        <qa.reweyou.in.qa.customview.RetryImageView
+            android:id="@+id/retry1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/selector_retry"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
     <qa.reweyou.in.qa.customview.TextViewCustomFont
@@ -72,16 +80,31 @@
         android:textColor="#fff"
         android:textSize="14dp" />
 
-    <android.support.v7.widget.RecyclerView
+
+    <qa.reweyou.in.qa.customview.CurveRecyclerView
         android:id="@+id/recyclerview2"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="186dp"
+        android:layout_marginTop="192dp"
         android:clipToPadding="false"
         android:paddingBottom="2dp"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
-        android:paddingTop="34dp" />
+
+        android:paddingTop="28dp">
+
+
+    </qa.reweyou.in.qa.customview.CurveRecyclerView>
+
+    <qa.reweyou.in.qa.customview.RetryImageView
+        android:id="@+id/retry2"
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/selector_retry"
+        android:visibility="gone" />
+
 
 </RelativeLayout>

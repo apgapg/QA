@@ -3,6 +3,7 @@ package qa.reweyou.in.qa.customview;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -50,6 +52,8 @@ public class MainFragment extends Fragment {
     private TopQuesAdapter topQuesAdapter;
     private RecyclerView recyclerViewtopques;
     private NewQuesAdapter newQuesAdapter;
+    private RetryImageView retrytop;
+    private RetryImageView retrybottom;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +67,31 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        retrytop = view.findViewById(R.id.retry1);
+        retrybottom = view.findViewById(R.id.retry2);
+
+        retrytop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isNetworkConnected()) {
+                    retrytop.startRotateAnimation();
+                    getDatatop();
+                } else {
+                    Toast.makeText(mContext, "Check Connectivity!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        retrybottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isNetworkConnected()) {
+                    retrybottom.startRotateAnimation();
+                    getDatabottom();
+                } else {
+                    Toast.makeText(mContext, "Check Connectivity!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         recyclerViewtopques = view.findViewById(R.id.recyclerview);
         recyclerViewtopques.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         topQuesAdapter = new TopQuesAdapter(mContext);
@@ -97,6 +126,11 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -118,12 +152,12 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (isAdded()) {
-            getData();
-            getData2();
+            getDatatop();
+            getDatabottom();
         }
     }
 
-    private void getData2() {
+    private void getDatabottom() {
         list2.clear();
 
         AndroidNetworking.post("https://www.reweyou.in/interview/top_questions.php")
@@ -135,6 +169,7 @@ public class MainFragment extends Fragment {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        retrybottom.stopRotateAnimation();
                         if (new NetworkHandler().isActivityAlive(TAG, (Activity) mContext, response)) {
 
                             try {
@@ -158,14 +193,14 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         Log.d(TAG, "onError: " + anError);
+                        retrybottom.freezeRotateAnimation();
                     }
                 });
     }
 
 
-    private void getData() {
+    private void getDatatop() {
         list.clear();
-
         AndroidNetworking.post("https://www.reweyou.in/interview/new_questions.php")
                 .addBodyParameter("uid", userSessionManager.getUID())
                 .addBodyParameter("authtoken", userSessionManager.getAuthToken())
@@ -175,6 +210,7 @@ public class MainFragment extends Fragment {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        retrytop.stopRotateAnimation();
                         if (new NetworkHandler().isActivityAlive(TAG, (Activity) mContext, response)) {
 
                             try {
@@ -196,6 +232,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         Log.d(TAG, "onError: " + anError);
+                        retrytop.freezeRotateAnimation();
 
                     }
                 });
