@@ -18,6 +18,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -50,6 +51,7 @@ public class ReplyFragment extends Fragment {
     private Context mContext;
     private View nonettext;
     private View noansyet;
+    private CircularImageView photofab;
 
 
     @Override
@@ -69,7 +71,7 @@ public class ReplyFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false));
         replyAdapter = new ReplyAdapter(getActivity());
         recyclerView.setAdapter(replyAdapter);
-
+        photofab = view.findViewById(R.id.photo);
         noansyet = view.findViewById(R.id.noansyet);
         nonettext = view.findViewById(R.id.nonettext);
         nonettext.setOnClickListener(new View.OnClickListener() {
@@ -90,10 +92,12 @@ public class ReplyFragment extends Fragment {
         return view;
     }
 
-    public void showdata(String quesid, String question) {
+    public void showdata(String quesid, String question, String profileurl) {
         this.quesid = quesid;
         this.question = question;
         questiontxtview.setText(question);
+        Log.d(TAG, "showdata: " + profileurl);
+        Glide.with(mContext).load(profileurl).skipMemoryCache(true).into(photofab);
 
         getData();
     }
@@ -159,5 +163,9 @@ public class ReplyFragment extends Fragment {
         mContext = null;
         super.onDestroy();
 
+    }
+
+    public void refreshData() {
+        getData();
     }
 }

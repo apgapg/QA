@@ -17,6 +17,11 @@ public class TopQuestionModel {
     private String status="";
     private String to_uid="";
     private String username = "";
+    private String profileurl = "";
+
+    public String getProfileurl() {
+        return profileurl;
+    }
 
     public String getUsername() {
         return username;

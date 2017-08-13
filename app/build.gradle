@@ -45,6 +45,7 @@ dependencies {
 
     compile 'com.afollestad:easyvideoplayer:0.3.0'
     compile 'gun0912.ted:tedpermission:1.0.3'
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
 
     compile project(path: ':annca')
     compile project(path: ':videoPlayer')

@@ -62,7 +62,7 @@ public class CurveRecyclerView extends RecyclerView {
 
         clipPath.lineTo(width, offset);
 
-        clipPath.cubicTo(width, offset, width / 2, Utils.pxFromDp(getContext(), 49), 0, offset);
+        clipPath.cubicTo(width, offset, (width + Utils.pxFromDp(getContext(), 1)) / 2, Utils.pxFromDp(getContext(), 49), 0, offset);
 
 
         super.onSizeChanged(w, h, oldw, oldh);

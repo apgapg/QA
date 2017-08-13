@@ -86,13 +86,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, filePath, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainActivity.this, ReplyVideoActivity.class);
             i.putExtra("videopath", filePath);
-            startActivity(i);
+            startActivityForResult(i, Utils.REQ_CODE_VIDEO_UPLOAD);
 
+        } else if (resultCode == RESULT_OK && requestCode == Utils.REQ_CODE_VIDEO_UPLOAD) {
+            refreshReplyFragmentData();
         }
     }
 
-    public void showSecondPage(String queid, String question) {
-        ((ReplyFragment) pagerAdapter.getRegisteredFragment(2)).showdata(queid, question);
+    private void refreshReplyFragmentData() {
+        ((ReplyFragment) pagerAdapter.getRegisteredFragment(2)).refreshData();
+    }
+
+    public void showSecondPage(String queid, String question, String profileurl) {
+        ((ReplyFragment) pagerAdapter.getRegisteredFragment(2)).showdata(queid, question, profileurl);
         viewPager.setCurrentItem(2);
     }
 

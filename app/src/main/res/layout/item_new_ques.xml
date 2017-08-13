@@ -73,20 +73,21 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="6dp"
-                android:paddingBottom="4dp"
-                android:paddingTop="3dp"
-                app:srcCompat="@drawable/ic_thumb_up" />
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                app:srcCompat="@drawable/ic_eye" />
 
             <qa.reweyou.in.qa.customview.TextViewCustomFont
                 android:id="@+id/textlike"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="20dp"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
                 android:maxWidth="170dp"
-                android:text="21"
-                android:textColor="@color/colorAccent"
+                android:text="2"
+                android:textColor="#757575"
                 android:textSize="11dp" />
         </LinearLayout>
 
@@ -102,7 +103,7 @@
             android:maxLines="1"
             android:maxWidth="170dp"
             android:paddingRight="8dp"
-            android:text="21 ans"
+            android:text="2 Ans"
             android:textColor="@color/colorAccent"
             android:textSize="11dp" />
 

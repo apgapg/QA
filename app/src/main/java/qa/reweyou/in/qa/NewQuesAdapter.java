@@ -76,7 +76,7 @@ public class NewQuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((MainActivity) context).showSecondPage(messagelist.get(getAdapterPosition()).getQueid(), messagelist.get(getAdapterPosition()).getQuestion());
+                    ((MainActivity) context).showSecondPage(messagelist.get(getAdapterPosition()).getQueid(), messagelist.get(getAdapterPosition()).getQuestion(), messagelist.get(getAdapterPosition()).getProfileurl());
                 }
             });
 

@@ -105,6 +105,7 @@ public class ReplyVideoActivity extends AppCompatActivity {
                         if (response.contains("Successfully Uploaded")) {
                             custom_upload_dialog.dismiss();
                             Toast.makeText(ReplyVideoActivity.this, "upload success", Toast.LENGTH_SHORT).show();
+                            setResult(RESULT_OK);
                             finish();
                         } else
                             Toast.makeText(ReplyVideoActivity.this, "something went wrong!", Toast.LENGTH_SHORT).show();
