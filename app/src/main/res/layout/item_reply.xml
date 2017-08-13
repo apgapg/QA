@@ -64,9 +64,9 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="18dp"
 
-                android:paddingBottom="13dp"
+                android:paddingBottom="12dp"
                 android:paddingTop="7dp"
                 app:srcCompat="@drawable/ic_thumb_up" />
 
