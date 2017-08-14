@@ -27,7 +27,7 @@
 
             android:text="#DIY"
             android:textColor="@color/colorPrimary"
-            android:textSize="11dp" />
+            android:textSize="13dp" />
 
         <qa.reweyou.in.qa.customview.TextViewCustomFont
             android:id="@+id/textuser"
@@ -57,7 +57,8 @@
             android:paddingRight="8dp"
             android:paddingTop="24dp"
             android:text="This is a question"
-            android:textColor="#424242" />
+            android:textColor="#424242"
+            android:textSize="15dp" />
 
 
         <LinearLayout
@@ -104,6 +105,6 @@
             android:paddingRight="8dp"
             android:text="21 ans"
             android:textColor="@color/colorAccent"
-            android:textSize="11dp" />
+            android:textSize="13dp" />
     </android.support.v7.widget.CardView>
 </RelativeLayout>

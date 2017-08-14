@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,11 +108,11 @@ public class MainFragment extends Fragment {
             }
         });
         RecyclerView recyclerViewnewques = view.findViewById(R.id.recyclerview2);
-        // recyclerViewnewques.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerViewnewques.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         //GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2, LinearLayoutManager.VERTICAL, false);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        //StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
-        recyclerViewnewques.setLayoutManager(staggeredGridLayoutManager);
+        // recyclerViewnewques.setLayoutManager(staggeredGridLayoutManager);
         newQuesAdapter = new NewQuesAdapter(getActivity());
         recyclerViewnewques.setAdapter(newQuesAdapter);
         view.findViewById(R.id.ask).setOnClickListener(new View.OnClickListener() {
