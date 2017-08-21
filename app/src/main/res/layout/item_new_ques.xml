@@ -85,7 +85,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:maxWidth="170dp"
-                android:paddingLeft="3dp"
+                android:paddingLeft="4dp"
                 android:text="2"
                 android:textColor="#969696"
                 android:textSize="14dp" />

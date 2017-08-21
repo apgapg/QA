@@ -15,8 +15,17 @@ private String time;
 private String views;
 private String thumbnail;
 private String uid;
+    private String duration;
 private String comments;
 private String visibility;
+
+    public String getDuration() {
+        int time = Integer.parseInt(duration);
+        int min = time / 60;
+        int sec = time % 60;
+
+        return String.format("%02d", min) + ":" + String.format("%02d", sec);
+    }
 
     public String getThumbnail() {
         return thumbnail;

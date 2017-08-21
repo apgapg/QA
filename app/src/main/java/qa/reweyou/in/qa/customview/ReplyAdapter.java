@@ -53,6 +53,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         replyAnswerViewHolder.reply.setText(messagelist.get(position).getComments());
         replyAnswerViewHolder.likes.setText(messagelist.get(position).getUpvotes());
+        replyAnswerViewHolder.duration.setText(messagelist.get(position).getDuration());
     }
 
     @Override
@@ -72,7 +73,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private CardView cv;
         private ImageView image;
         private TextView views;
-        private TextView reply, likes;
+        private TextView reply, likes, duration;
 
         public ReplyAnswerViewHolder(View inflate) {
             super(inflate);
@@ -81,6 +82,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             views = inflate.findViewById(R.id.views);
             reply = inflate.findViewById(R.id.reply);
             likes = inflate.findViewById(R.id.likes);
+            duration = inflate.findViewById(R.id.duration);
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

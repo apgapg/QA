@@ -1,6 +1,8 @@
 package qa.reweyou.in.qa;
 
 import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -59,10 +61,19 @@ public class ReplyVideoActivity extends AppCompatActivity {
                 custom_upload_dialog.setCancelable(false);
                 custom_upload_dialog.show(getSupportFragmentManager(), "");
 
+
+                MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+                retriever.setDataSource(ReplyVideoActivity.this, Uri.parse(videourl));
+                String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                final int timeInMillisec = (int) ((Long.parseLong(time)) / 1000);
+                Log.d(TAG, "uploadPost: duration: " + timeInMillisec);
+                retriever.release();
+
+
                 Glide.with(ReplyVideoActivity.this).load(videourl).asBitmap().toBytes(Bitmap.CompressFormat.JPEG, 90).override(500, 500).into(new SimpleTarget<byte[]>() {
                     @Override
                     public void onResourceReady(byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {
-                        uploadPost(Base64.encodeToString(resource, Base64.DEFAULT));
+                        uploadPost(Base64.encodeToString(resource, Base64.DEFAULT), timeInMillisec);
                     }
                 });
 
@@ -72,7 +83,10 @@ public class ReplyVideoActivity extends AppCompatActivity {
 
     }
 
-    private void uploadPost(String encodedImage) {
+    private void uploadPost(String encodedImage, int timeInMillisec) {
+
+
+
 
          OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -87,6 +101,7 @@ public class ReplyVideoActivity extends AppCompatActivity {
                 .addMultipartParameter("auth", userSessionManager.getAuthToken())
                 .addMultipartParameter("image", encodedImage)
                 .addMultipartParameter("queid", Utils.QUES_ID)
+                .addMultipartParameter("duration", String.valueOf(timeInMillisec))
                 .setTag("uploadTest")
                 .setPriority(Priority.HIGH)
                 .setOkHttpClient(okHttpClient)
