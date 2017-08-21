@@ -49,9 +49,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ReplyAnswerViewHolder replyAnswerViewHolder = (ReplyAnswerViewHolder) holder;
         Glide.with(mContext).load(messagelist.get(position).getThumbnail()).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(replyAnswerViewHolder.image);
-        if (messagelist.get(position).getViews().equals("0")) {
-            replyAnswerViewHolder.views.setText("no views");
-        } else replyAnswerViewHolder.views.setText(messagelist.get(position).getViews() + " views");
+        replyAnswerViewHolder.views.setText(messagelist.get(position).getViews());
 
         replyAnswerViewHolder.reply.setText(messagelist.get(position).getComments());
         replyAnswerViewHolder.likes.setText(messagelist.get(position).getUpvotes());

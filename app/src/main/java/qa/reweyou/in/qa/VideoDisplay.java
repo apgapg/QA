@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.easyvideoplayer.EasyVideoCallback;
@@ -19,7 +18,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
-import com.devbrackets.android.exomedia.listener.OnPreparedListener;
 import com.devbrackets.android.exomedia.ui.widget.VideoView;
 
 import qa.reweyou.in.qa.classes.UserSessionManager;
@@ -42,7 +40,7 @@ public class VideoDisplay extends AppCompatActivity implements EasyVideoCallback
         setContentView(R.layout.activity_video_display);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -112,10 +110,11 @@ public class VideoDisplay extends AppCompatActivity implements EasyVideoCallback
         emVideoView.setVideoURI(Uri.parse(url));*/
 
 
-        player = (EasyVideoPlayer) findViewById(R.id.player);
+        player = findViewById(R.id.player);
 
         // Sets the callback to this Activity, since it inherits EasyVideoCallback
         player.setCallback(this);
+
 
         // Sets the source to the HTTP URL held in the TEST_URL variable.
         // To play files, you can use Uri.fromFile(new File("..."))

@@ -64,31 +64,36 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="12dp"
             android:orientation="horizontal"
-            android:paddingBottom="4dp">
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp">
 
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="6dp"
-                android:paddingBottom="4dp"
-                android:paddingTop="3dp"
-                app:srcCompat="@drawable/ic_thumb_up" />
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center_vertical"
+                android:paddingBottom="1dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingTop="2dp"
+                app:srcCompat="@drawable/ic_eye" />
 
             <qa.reweyou.in.qa.customview.TextViewCustomFont
                 android:id="@+id/textlike"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="24dp"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
                 android:maxWidth="170dp"
-                android:paddingLeft="2dp"
-                android:text="21"
-                android:textColor="@color/colorAccent"
-                android:textSize="11dp" />
+                android:paddingLeft="3dp"
+                android:text="2"
+                android:textColor="#969696"
+                android:textSize="13dp" />
         </LinearLayout>
 
 

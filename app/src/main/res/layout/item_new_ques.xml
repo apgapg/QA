@@ -72,10 +72,8 @@
 
 
             <ImageView
-                android:layout_width="24dp"
+                android:layout_width="14dp"
                 android:layout_height="24dp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:paddingTop="2dp"
                 app:srcCompat="@drawable/ic_eye" />
 
@@ -87,6 +85,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:maxWidth="170dp"
+                android:paddingLeft="3dp"
                 android:text="2"
                 android:textColor="#969696"
                 android:textSize="14dp" />
