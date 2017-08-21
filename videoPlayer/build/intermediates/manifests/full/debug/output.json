@@ -1,1 +1,1 @@
-[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":40300},"outputFile":{"path":"/home/master/AndroidStudioProjects/QA/videoPlayer/build/intermediates/manifests/full/debug/AndroidManifest.xml"},"properties":{"packageId":"com.devbrackets.android.exomedia","split":""}}]
+[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":40300},"path":"AndroidManifest.xml","properties":{"packageId":"com.devbrackets.android.exomedia","split":""}}]

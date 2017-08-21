@@ -1,1 +1,1 @@
-[{"outputType":{"type":"PROCESSED_RES"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":40300},"outputFile":{"path":"/home/master/AndroidStudioProjects/QA/videoPlayer/build/intermediates/res/debug/resources-debug.ap_"},"properties":{"packageId":"com.devbrackets.android.exomedia","split":""}}]
+[{"outputType":{"type":"PROCESSED_RES"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":40300},"path":"resources-debug.ap_","properties":{"packageId":"com.devbrackets.android.exomedia","split":""}}]
